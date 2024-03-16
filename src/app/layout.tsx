@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/Providers';
+import Sidebar from '@/components/Sidebar';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -18,7 +19,12 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
       <body className={fontSans.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex">
+            <Sidebar />
+            <main>{children}</main>
+          </div>
+        </Providers>
       </body>
     </html>
   );
